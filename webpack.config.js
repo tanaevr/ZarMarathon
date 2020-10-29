@@ -7,7 +7,7 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx', '.json']
     },
     mode: NODE_ENV ? NODE_ENV : 'development',
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: path.resolve(__dirname, 'src/index.tsx'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
@@ -15,7 +15,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.[tj]sx?$/,
+                test: /\.(t|j)sx?$/,
                 use: ['ts-loader'],
             },
             {
@@ -44,7 +44,7 @@ module.exports = {
     ],
     devServer: {
         port: 3000,
-        open: true,
+        open: false,
         hot: true,
     },
     devtool: 'source-map'
