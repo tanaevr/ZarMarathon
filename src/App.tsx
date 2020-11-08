@@ -1,13 +1,20 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
-import './static/custom.css';
 
-const s = require('./static/App.modules.scss');
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 const App: FC = () => {
-    return (
-        <div className={cn(s.default.header, 'custom')}>App</div>
-    )
-}
+  return (
+    <div className={cn('wrapper', { 'wrapper--index': true })}>
+      {/* TODO: прописать класс "wrapper--index" только для главной страницы при роуте */}
+      <Header />
+      <section className="page-content" />
+      <Footer />
+    </div>
+  );
+};
 
 export default App;

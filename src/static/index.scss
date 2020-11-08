@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 body {
-    min-height: 100vh;
-    background-color: blanchedalmond;
+  min-height: 100vh;
+
+  font-family: 'Karla', sans-serif;
+}
+
+.wrapper {
+  &--index {
+    background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
+  }
+}
+
+.page-content {
+  min-height: calc(100vh - 174px);
 }
