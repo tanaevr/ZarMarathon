@@ -7,7 +7,7 @@ import Pokedex from './pages/Pokedex';
 import Legendaries from './pages/Legendaries';
 import Documentation from './pages/Documentation';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/scss/bootstrap-grid.scss';
 
 const App: FC = () => {
   return (
