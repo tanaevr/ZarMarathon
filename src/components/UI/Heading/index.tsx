@@ -10,7 +10,13 @@ interface IProps {
   children?: React.ReactNode;
 }
 
-const Heading: FC<IProps> = ({ component: ComponentProp, className: classNameProp, title, children }: IProps) => {
+const Heading: FC<IProps> = ({
+  component: ComponentProp,
+  className: classNameProp,
+  title,
+  children,
+  ...otherProps
+}: IProps) => {
   const className = cn(
     'heading',
     {
@@ -19,7 +25,11 @@ const Heading: FC<IProps> = ({ component: ComponentProp, className: classNamePro
     classNameProp,
   );
 
-  return <ComponentProp className={className}>{children}</ComponentProp>;
+  return (
+    <ComponentProp className={className} {...otherProps}>
+      {children}
+    </ComponentProp>
+  );
 };
 
 Heading.defaultProps = {

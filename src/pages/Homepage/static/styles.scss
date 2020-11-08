@@ -1,0 +1,27 @@
+.homepage {
+  &__content {
+    padding-top: 128px;
+    padding-bottom: 82px;
+    position: relative;
+  }
+
+  &__title {
+    max-width: 506px;
+    margin-bottom: 64px;
+  }
+
+  &__desc {
+    font-size: 32px;
+    line-height: 37px;
+    max-width: 515px;
+    margin-bottom: 64px;
+  }
+
+  &__pokemon-parallax {
+    position: absolute;
+    top: 63px;
+    left: 490px;
+    width: 793px;
+    height: 728px;
+  }
+}
