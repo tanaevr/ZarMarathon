@@ -1,0 +1,64 @@
+@import '../../../../static/variables';
+
+.btn {
+  background: transparent;
+  box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 11px;
+  color: initial;
+  border: none;
+  display: inline-flex;
+
+  padding: 17px 36px 22px;
+
+  font-size: 23px;
+  line-height: 27px;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+
+  text-decoration: none;
+
+  text-align: center;
+
+  &_green {
+    background-color: $color_green;
+  }
+  &_third {
+    background-color: $color_green;
+  }
+  &_primary {
+    background-color: $color_green;
+  }
+  &_second {
+    background-color: $color_green;
+  }
+  &_danger {
+    background-color: $color_green;
+  }
+  &_light {
+    background-color: $color_green;
+  }
+
+  &_fullwidth {
+    display: block;
+  }
+
+  &:active {
+    box-shadow: inset 0px -6px 0px rgba(0, 0, 0, 0.18);
+    padding-bottom: 16px;
+    margin-top: 6px;
+  }
+
+  &_small {
+    padding: 12px 36px 17px;
+
+    font-size: 18px;
+    line-height: 20px;
+
+    &:active {
+      box-shadow: inset 0px -6px 0px rgba(0, 0, 0, 0.18);
+      padding-bottom: 11px;
+      margin-top: 6px;
+    }
+  }
+}

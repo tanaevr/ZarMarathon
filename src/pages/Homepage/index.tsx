@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Button from '../../components/UI/Button';
 import Heading from '../../components/UI/Heading';
 
 import Parallax from './Parallax';
@@ -24,6 +25,9 @@ const Homepage: FC = (props) => {
               <div className="homepage__desc">
                 You can know the type of Pokemon, its strengths, disadvantages and abilities
               </div>
+              <Button component="a" kind="green" type="button" href="/pokedex/" size="small">
+                See pokemons
+              </Button>
 
               <div className="homepage__pokemon-parallax">
                 <Parallax />
