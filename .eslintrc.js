@@ -28,6 +28,7 @@ module.exports = {
         jsx: 'never',
       },
     ],
+    'react/jsx-props-no-spreading': 'off',
   },
   settings: {
     'import/resolver': {

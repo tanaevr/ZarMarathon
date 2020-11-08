@@ -1,25 +1,32 @@
 import React, { FC } from 'react';
+import { useHistory } from 'react-router-dom';
 import cn from 'classnames';
 
-interface LinkProps {
+interface NavLinkProps {
   current?: boolean;
-  link: string;
+  href: string;
   children: any;
 }
 
-const Link: FC<LinkProps> = ({ current, link, children }: LinkProps) => {
-  {
-    /* TODO: подключить Link (React-Router-Dom) */
-  }
+const NavLink: FC<NavLinkProps> = ({ current, href, children }: NavLinkProps) => {
+  const history = useHistory();
+
+  const handleClick = (url: string) => {
+    history.push(url);
+  };
+
   return (
-    <a href={link} className={cn('header__menu__link', { 'header__menu__link--current': current })}>
+    <a
+      href={href}
+      className={cn('header__menu__link', { 'header__menu__link--current': current })}
+      onClick={() => handleClick(href)}>
       {children}
     </a>
   );
 };
 
-Link.defaultProps = {
+NavLink.defaultProps = {
   current: false,
 };
 
-export default Link;
+export default NavLink;
