@@ -1,12 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import './variables';
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   min-height: 100vh;
 
   font-family: 'Karla', sans-serif;
+
+  color: $color_base;
 }
 
 .wrapper {
+  overflow: hidden;
   &--index {
     background: linear-gradient(180deg, #f5db13 0%, #f2b807 100%);
   }
