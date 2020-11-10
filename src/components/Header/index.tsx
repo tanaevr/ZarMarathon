@@ -1,36 +1,17 @@
 import React, { FC } from 'react';
-
+import { usePath } from 'hookrouter';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import './static/styles/header.scss';
 import img from './static/img/pokemonlogo.svg';
 
+import { GENERAL_MENU } from '../../routes';
+
 import NavLink from './link';
 
-const MENU = [
-  {
-    id: 1,
-    title: 'Home',
-    href: '/',
-  },
-  {
-    id: 2,
-    title: 'Pokedex',
-    href: '/pokedex/',
-  },
-  {
-    id: 3,
-    title: 'Legendaries',
-    href: '/legendaries/',
-  },
-  {
-    id: 4,
-    title: 'Documentation',
-    href: '/documentation/',
-  },
-];
+const Header: FC<{}> = () => {
+  const path = usePath();
 
-const Header: FC<{}> = ({ match }: any) => {
   return (
     <section className="header">
       <Container className="container-xl">
@@ -42,9 +23,9 @@ const Header: FC<{}> = ({ match }: any) => {
           </Col>
           <Col>
             <ul className="header__menu">
-              {MENU.map((item) => (
-                <li key={item.id} className="header__menu__item">
-                  <NavLink current={match.path === item.href} href={item.href}>
+              {GENERAL_MENU.filter((item) => item.showInMenu === true).map((item) => (
+                <li key={item.title} className="header__menu__item">
+                  <NavLink current={item.link === path} href={item.link}>
                     {item.title}
                   </NavLink>
                 </li>

@@ -5,11 +5,14 @@
   line-height: 29px;
 
   color: #212121;
+  background: #f5db13;
+  box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
   box-shadow: 0 4px 16px rgba(1, 28, 64, 0.2);
 
   & a {
-    color: initial;
     text-decoration: none;
+
+    color: initial;
   }
 
   &__logo {
@@ -20,9 +23,10 @@
     display: flex;
     justify-content: flex-end;
 
-    list-style: none outside;
-    padding: 0;
     margin: 0;
+    padding: 0;
+
+    list-style: none outside;
 
     &__item {
       padding: 0 30px;
