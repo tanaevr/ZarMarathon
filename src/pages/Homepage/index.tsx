@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-
+import { A } from 'hookrouter';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import Header from '../../components/Header';
@@ -11,10 +11,14 @@ import Parallax from './Parallax';
 
 import './static/styles.scss';
 
-const Homepage: FC = (props) => {
+interface IProps {
+  index?: boolean;
+}
+
+const Homepage: FC<IProps> = () => {
   return (
     <>
-      <Header {...props} />
+      <Header />
       <section className="page-content">
         <Container className="container-xl">
           <Row className="align-items-center">
@@ -25,7 +29,7 @@ const Homepage: FC = (props) => {
               <div className="homepage__desc">
                 You can know the type of Pokemon, its strengths, disadvantages and abilities
               </div>
-              <Button component="a" kind="green" type="button" href="/pokedex/" size="small">
+              <Button component={A} kind="green" type="button" href="/pokedex/" size="small">
                 See pokemons
               </Button>
 

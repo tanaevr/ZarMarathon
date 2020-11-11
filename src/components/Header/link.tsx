@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
+import { A } from 'hookrouter';
 import cn from 'classnames';
 
 interface NavLinkProps {
@@ -9,19 +9,10 @@ interface NavLinkProps {
 }
 
 const NavLink: FC<NavLinkProps> = ({ current, href, children }: NavLinkProps) => {
-  const history = useHistory();
-
-  const handleClick = (url: string) => {
-    history.push(url);
-  };
-
   return (
-    <a
-      href={href}
-      className={cn('header__menu__link', { 'header__menu__link--current': current })}
-      onClick={() => handleClick(href)}>
+    <A href={href} className={cn('header__menu__link', { 'header__menu__link--current': current })}>
       {children}
-    </a>
+    </A>
   );
 };
 
