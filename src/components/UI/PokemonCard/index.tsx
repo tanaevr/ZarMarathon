@@ -3,30 +3,11 @@ import cn from 'classnames';
 
 import Heading from '../Heading';
 
+import { IPokemonProps, TsArrayElem, TsObjectElem } from '../../../pages/Pokedex';
+
 import './static/styles.scss';
 
-type TsArrayElem = string;
-
-type TsObjectElem = {
-  [n: string]: number;
-};
-
-interface IProps {
-  // name_clean: string;
-  // abilities: TsArrayElem[];
-  stats: TsObjectElem;
-  types: TsArrayElem[];
-  img: string;
-  name: string;
-  // base_experience: number;
-  // height: number;
-  // id: number;
-  // is_default: boolean;
-  // order: number;
-  // weight: number;
-}
-
-const PokemonCard: FC<IProps> = ({ name, img, stats, types }: IProps) => {
+const PokemonCard: FC<IPokemonProps> = ({ name, img, stats, types }: IPokemonProps) => {
   const getStats = (arr: TsObjectElem, keys: TsArrayElem[]) => {
     return (
       <>
