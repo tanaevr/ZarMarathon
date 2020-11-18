@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import Heading from '../Heading';
+import PokeBallPng from '../../../pages/Homepage/Parallax/static/img/Pokeball2.png';
 
 import { IPokemonProps, TsArrayElem, TsObjectElem } from '../../../pages/Pokedex';
 
@@ -38,6 +39,8 @@ const PokemonCard: FC<IPokemonProps> = ({ name, img, stats, types }: IPokemonPro
       water: '#76aadb',
       ice: '#76aadb',
       bug: '#70a83b',
+      normal: '#76AADB',
+      gosth: '#76AADB',
     };
 
     const colorFirst = colors[arr[0]];
@@ -59,7 +62,7 @@ const PokemonCard: FC<IPokemonProps> = ({ name, img, stats, types }: IPokemonPro
       </div>
 
       <div className="pokemon-card__img" style={getBackground(types)}>
-        <img src={img} alt={name} />
+        <img src={img || PokeBallPng} alt={name} loading="lazy" />
       </div>
     </div>
   );
