@@ -1,6 +1,7 @@
 import React from 'react';
 import Homepage from './pages/Homepage';
 import Pokedex from './pages/Pokedex';
+// import Pokemon from './pages/Pokemon';
 import Legendaries from './pages/Legendaries';
 import Documentation from './pages/Documentation';
 
@@ -24,6 +25,12 @@ export const GENERAL_MENU: IGeneralMenu[] = [
     component: () => <Pokedex />,
     showInMenu: true,
   },
+  // {
+  //   title: 'Pokemon',
+  //   link: '/pokemon/:id',
+  //   component: ({ id }: number) => <Pokemon id={id} />,
+  //   showInMenu: false,
+  // },
   {
     title: 'Legendaries',
     link: '/legendaries/',
