@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-
-import { URL_API } from '../constants/api';
+import req from '../utils/request';
 
 interface IResult {
   total: number;
@@ -13,9 +12,10 @@ interface IQuery {
   limit?: number;
   count?: number;
   offset?: number;
+  name?: string;
 }
 
-export const usePokemons = (query: IQuery) => {
+const useData = (endpoint: string, query: IQuery, deps: any[] = []) => {
   const [data, setData] = useState<IResult>({
     total: 0,
     count: 0,
@@ -25,15 +25,10 @@ export const usePokemons = (query: IQuery) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
 
-  const getPokemons = async () => {
+  const getData = async () => {
     setIsLoading(true);
     try {
-      const urlSearchParams = Object.keys(query).map((key) => {
-        return `${key}=${query[key]}`;
-      });
-
-      const response = await fetch(`${URL_API}pokemons${!!urlSearchParams && `?${urlSearchParams}`}`);
-      const result = await response.json();
+      const result = await req(endpoint, query);
 
       setData(result);
     } catch (e) {
@@ -44,8 +39,8 @@ export const usePokemons = (query: IQuery) => {
   };
 
   useEffect(() => {
-    getPokemons();
-  }, []);
+    getData();
+  }, deps);
 
   return {
     data,
@@ -53,3 +48,5 @@ export const usePokemons = (query: IQuery) => {
     isError,
   };
 };
+
+export default useData;
