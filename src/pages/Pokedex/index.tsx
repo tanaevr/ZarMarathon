@@ -1,7 +1,9 @@
 import React, { FC, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import useData from '../../hooks/useData';
+import { useData } from '../../hooks/useData';
+
+import { IPokemonsProps, IPokemonProps } from '../../interface';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -11,40 +13,25 @@ import PokemonCard from '../../components/UI/PokemonCard';
 
 import './static/styles.scss';
 
-export type TsArrayElem = string;
-
-export type TsObjectElem = {
-  [n: string]: number;
-};
-
-export interface IPokemonProps {
-  // name_clean: string;
-  abilities: TsArrayElem[];
-  stats: TsObjectElem;
-  types: TsArrayElem[];
-  img: string;
-  name: string;
-  // base_experience: number;
-  height: number;
-  id: number;
-  // is_default: boolean;
-  order: number;
-  weight: number;
+interface IQuery {
+  name?: string;
+  limit?: number;
+  offset?: number;
 }
 
 interface IProps {}
 
 const Pokedex: FC<IProps> = () => {
-  const [query, setQuery] = useState({
+  const [query, setQuery] = useState<IQuery>({
     limit: 21,
     offset: 0,
   });
 
-  const { data, isLoading, isError } = useData('getPokemons', query, [JSON.stringify(query)]);
+  const { data, isLoading, isError } = useData<IPokemonsProps>('getPokemons', query, [JSON.stringify(query)]);
 
   const handleSearch = (e: any) => {
     function keyUp() {
-      setQuery((prevState) => ({
+      setQuery((prevState: IQuery) => ({
         ...prevState,
         [e.target.name]: e.target.value,
       }));
@@ -64,7 +51,7 @@ const Pokedex: FC<IProps> = () => {
           <Row>
             <Col>
               <Heading component="div" className="pokedex__title">
-                {!isLoading && data.total} <strong>Pokemons</strong> for you to choose your favorite
+                {!isLoading && data && data.total} <strong>Pokemons</strong> for you to choose your favorite
               </Heading>
             </Col>
           </Row>
@@ -86,7 +73,7 @@ const Pokedex: FC<IProps> = () => {
           </Container>
         ) : (
           <>
-            {!data.total ? (
+            {data && !data.total ? (
               <Container>
                 <Row>
                   <Col xs={12}>
@@ -99,11 +86,12 @@ const Pokedex: FC<IProps> = () => {
             ) : (
               <Container>
                 <Row>
-                  {data.pokemons.map((pokemon: IPokemonProps) => (
-                    <Col key={pokemon.id} xs={4}>
-                      <PokemonCard {...pokemon} />
-                    </Col>
-                  ))}
+                  {data &&
+                    data.pokemons.map((pokemon: IPokemonProps) => (
+                      <Col key={pokemon.id} xs={4}>
+                        <PokemonCard {...pokemon} />
+                      </Col>
+                    ))}
                 </Row>
               </Container>
             )}

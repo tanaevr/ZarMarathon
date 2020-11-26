@@ -4,7 +4,7 @@ import cn from 'classnames';
 import Heading from '../Heading';
 import PokeBallPng from '../../../pages/Homepage/Parallax/static/img/Pokeball2.png';
 
-import { IPokemonProps, TsArrayElem, TsObjectElem } from '../../../pages/Pokedex';
+import { IPokemonProps, TsArrayElem, TsObjectElem } from '../../../interface';
 
 import './static/styles.scss';
 

@@ -1,34 +1,21 @@
 import { useState, useEffect } from 'react';
 import req from '../utils/request';
 
-interface IResult {
-  total: number;
-  count: number;
-  offset: number;
-  pokemons: any[];
+interface UseDataState<T> {
+  data: T | null;
+  isLoading: boolean;
+  isError: boolean;
 }
 
-interface IQuery {
-  limit?: number;
-  count?: number;
-  offset?: number;
-  name?: string;
-}
-
-const useData = (endpoint: string, query: IQuery, deps: any[] = []) => {
-  const [data, setData] = useState<IResult>({
-    total: 0,
-    count: 0,
-    offset: 0,
-    pokemons: [],
-  });
+export function useData<T>(endpoint: string, query: object, deps: any[] = []): UseDataState<T> {
+  const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setError] = useState<boolean>(false);
 
-  const getData = async () => {
+  const getData = async (): Promise<void> => {
     setIsLoading(true);
     try {
-      const result = await req(endpoint, query);
+      const result = await req<T>(endpoint, query);
 
       setData(result);
     } catch (e) {
@@ -47,6 +34,4 @@ const useData = (endpoint: string, query: IQuery, deps: any[] = []) => {
     isLoading,
     isError,
   };
-};
-
-export default useData;
+}
