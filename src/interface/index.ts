@@ -11,17 +11,21 @@ export interface IPokemonsProps {
   pokemons: any[];
 }
 
+export interface IPokemonRequest {
+  [n: string]: any;
+}
+
 export interface IPokemonProps {
-  // name_clean?: string;
+  name_clean?: string;
   abilities: TsArrayElem[];
   stats: TsObjectElem;
   types: TsArrayElem[];
   img: string;
   name: string;
-  // base_experience?: number;
+  base_experience?: number;
   height: number;
   id: number;
-  // is_default?: boolean;
+  is_default?: boolean;
   order: number;
   weight: number;
 }

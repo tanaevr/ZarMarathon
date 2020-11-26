@@ -1,20 +1,30 @@
 import React, { FC } from 'react';
 
-// import { useData } from '../../hooks/useData';
+import { useData } from '../../hooks/useData';
 
-import { IPokemonPageProps } from '../../interface';
+import { IPokemonPageProps, IPokemonProps } from '../../interface';
+
+import toCapitalizeFirstLetter from '../../utils/toCapitalizeFirstLetter';
 
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 
 const Pokemon: FC<IPokemonPageProps> = ({ id }) => {
-  // const { data, isLoading, isError } = useData<IPokemonsProps>('getPokemons', query, [JSON.stringify(query)]);
+  const { data, isLoading } = useData<IPokemonProps>('getPokemon', { id });
 
   return (
     <>
       <Header />
       <section className="page-content">
-        {id}
+        {isLoading ? (
+          <div>isLoading</div>
+        ) : (
+          <>
+            <div>{data?.name}</div>
+            <div>{toCapitalizeFirstLetter(data?.name)}</div>
+          </>
+        )}
+        
       </section>
       <Footer />
     </>

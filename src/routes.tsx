@@ -29,7 +29,7 @@ export const GENERAL_MENU: IGeneralMenu[] = [
   },
   {
     title: 'Pokemon',
-    link: '/pokemon/:id',
+    link: '/pokedex/:id',
     component: ({ id }: IPokemonPageProps) => <Pokemon id={id} />,
     showInMenu: false,
   },
