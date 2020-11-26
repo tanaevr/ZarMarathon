@@ -25,3 +25,7 @@ export interface IPokemonProps {
   order: number;
   weight: number;
 }
+
+export interface IPokemonPageProps {
+  id: number
+}
